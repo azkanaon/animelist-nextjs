@@ -6,9 +6,11 @@ import { useRouter } from "next/navigation";
 const InputSearch = () => {
   const searchRef = useRef();
   const router = useRouter();
+
   const handleSearch = (e) => {
-    e.preventDefault();
     const keyword = searchRef.current.value;
+    if (!keyword) return;
+    e.preventDefault();
     router.push(`/search/${keyword}`);
   };
   return (
